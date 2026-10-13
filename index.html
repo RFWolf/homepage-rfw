@@ -33,13 +33,27 @@
             </a>
             <nav aria-label="Hauptnavigation">
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#home" class="active">Startseite</a></li>
-                    <li><a href="#about">Über mich</a></li>
-                    <li><a href="#personal">Persönlich</a></li>
-                    <li><a href="#expertise">Interessen</a></li>
-                    <li><a href="#maerkte">Märkte</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                    <li class="has-sub" data-section="maerkte">
+                        <button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true">Märkte<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <ul class="submenu">
+                            <li><a href="#maerkte">Live-Übersicht</a></li>
+                            <li><a href="#etfs">Themen-ETFs <em>Fokus</em></a></li>
+                            <li><a href="#edelmetalle">Edelmetalle <em>Fokus</em></a></li>
+                            <li><a href="#aktien">Aktien</a></li>
+                            <li><a href="#krypto">Kryptowährungen</a></li>
+                            <li><a href="#glossar">Fachbegriffe</a></li>
+                        </ul>
+                    </li>
+                    <li data-section="news"><a href="#news">News</a></li>
+                    <li class="has-sub" data-section="profil">
+                        <button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true">Profil<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <ul class="submenu">
+                            <li><a href="#about">Über mich</a></li>
+                            <li><a href="#personal">Persönliche Informationen</a></li>
+                            <li><a href="#expertise">Meine Interessen</a></li>
+                        </ul>
+                    </li>
+                    <li data-section="contact"><a href="#contact">Kontakt</a></li>
                 </ul>
             </nav>
             <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-menu">
@@ -68,212 +82,33 @@
                 <p class="subtitle">Leidenschaft für <span class="rotator" aria-live="off"><span class="rotator-word is-active">Aktien</span><span class="rotator-word">ETFs</span><span class="rotator-word">Kryptowährungen</span><span class="rotator-word">Edelmetalle</span><span class="rotator-word">Unternehmensanalyse</span></span></p>
                 <p class="tagline">Interesse an Aktien, ETFs, Kryptowährungen, Edelmetallen und Unternehmensanalyse</p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary" data-magnetic>
-                        <span>Lassen Sie uns sprechen</span>
+                    <a href="#maerkte" class="btn btn-primary" data-magnetic>
+                        <span class="live-dot" aria-hidden="true"></span>
+                        <span>Live-Märkte ansehen</span>
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </a>
-                    <a href="#maerkte" class="btn btn-ghost"><span class="live-dot" aria-hidden="true"></span>Live-Märkte ansehen</a>
+                    <a href="#contact" class="btn btn-ghost">Kontakt</a>
                 </div>
             </div>
 
-            <a href="#about" class="scroll-hint" aria-label="Nach unten scrollen">
-                <span class="mouse"><span></span></span>
-            </a>
-        </section>
+                    </section>
 
-        <!-- Marquee -->
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee-track">
-                <span>Aktien</span><i></i><span>ETFs</span><i></i><span>Kryptowährungen</span><i></i><span>Edelmetalle</span><i></i><span>Unternehmensanalyse</span><i></i><span>Finanzplanung</span><i></i>
-                <span>Aktien</span><i></i><span>ETFs</span><i></i><span>Kryptowährungen</span><i></i><span>Edelmetalle</span><i></i><span>Unternehmensanalyse</span><i></i><span>Finanzplanung</span><i></i>
-            </div>
-        </div>
-
-        <!-- About Section -->
-        <section id="about" class="about">
+        <!-- Markt-Überblick (Live) -->
+        <section id="snapshot" class="snapshot" aria-label="Markt-Überblick">
             <div class="container">
-                <div class="section-head" data-reveal>
-                    <p class="eyebrow">01 — Profil</p>
-                    <h2>Über mich</h2>
+                <div class="snap-head">
+                    <span class="live-dot" aria-hidden="true"></span>
+                    <strong>Markt-Überblick</strong>
+                    <span class="snap-time">Stand <time data-snap="time">–</time></span>
                 </div>
-
-                <div class="about-layout">
-                    <div class="about-text">
-                        <p class="lead" data-reveal>
-                            Willkommen auf meiner persönlichen Website.
-                        </p>
-                        <p data-reveal>
-                            Die Finanzmärkte faszinieren mich – ihre Dynamik, ihre Chancen und auch ihre Herausforderungen. Ich beschäftige mich intensiv mit Aktien, ETFs, Kryptowährungen und Edelmetallen und verfolge täglich, wie sich diese Märkte entwickeln. Dabei geht es mir nicht nur um Zahlen, sondern darum, Zusammenhänge zu verstehen und fundierte Perspektiven zu entwickeln.
-                        </p>
-                        <p data-reveal>
-                            Mein beruflicher Weg ist vielseitig: Ich habe ein Elektrofachabitur sowie eine Ausbildung zum Elektroniker für Betriebstechnik abgeschlossen. Anschließend konnte ich in unterschiedlichen Bereichen wertvolle Erfahrungen sammeln – von der Sicherheitsarbeit auf Veranstaltungen über meine Tätigkeit als Servicemonteur bis hin zur Rolle als bauleitender Monteur im Bereich Krananlagen.
-                        </p>
-                        <p data-reveal>
-                            Diese Stationen haben mich geprägt: Ich habe gelernt, Verantwortung zu übernehmen, Risiken realistisch einzuschätzen und auch in anspruchsvollen Situationen einen kühlen Kopf zu bewahren. Genau diese Fähigkeiten helfen mir heute, die Finanzmärkte strukturiert und diszipliniert zu analysieren.
-                        </p>
-                        <p data-reveal>
-                            Meine technische Ausbildung hat mein analytisches Denken geschärft und mir ein gutes Verständnis für komplexe Systeme vermittelt – ein klarer Vorteil beim Bewerten wirtschaftlicher Entwicklungen. Zusätzlich spreche ich Englisch und Russisch auf nahezu muttersprachlichem Niveau, was mir den Zugang zu internationalen Informationen und unterschiedlichen Perspektiven ermöglicht.
-                        </p>
-                    </div>
-
-                    <aside class="about-side">
-                        <div class="timeline-card spotlight" data-reveal>
-                            <h3 class="side-title">Beruflicher Weg</h3>
-                            <ol class="timeline">
-                                <li>
-                                    <span class="t-dot"></span>
-                                    <strong>Elektrofachabitur</strong>
-                                    <span>Technisches Fundament</span>
-                                </li>
-                                <li>
-                                    <span class="t-dot"></span>
-                                    <strong>Elektroniker für Betriebstechnik</strong>
-                                    <span>Ausbildung abgeschlossen</span>
-                                </li>
-                                <li>
-                                    <span class="t-dot"></span>
-                                    <strong>Sicherheitsarbeit</strong>
-                                    <span>Auf Veranstaltungen</span>
-                                </li>
-                                <li>
-                                    <span class="t-dot"></span>
-                                    <strong>Servicemonteur</strong>
-                                    <span>Technischer Service</span>
-                                </li>
-                                <li>
-                                    <span class="t-dot"></span>
-                                    <strong>Bauleitender Monteur</strong>
-                                    <span>Bereich Krananlagen</span>
-                                </li>
-                            </ol>
-                        </div>
-
-                        <div class="lang-card spotlight" data-reveal>
-                            <h3 class="side-title">Sprachen</h3>
-                            <div class="lang-row">
-                                <span>Englisch</span>
-                                <div class="bar"><i style="--w:96%"></i></div>
-                            </div>
-                            <div class="lang-row">
-                                <span>Russisch</span>
-                                <div class="bar"><i style="--w:96%"></i></div>
-                            </div>
-                            <p class="lang-note">Nahezu muttersprachliches Niveau</p>
-                        </div>
-                    </aside>
-                </div>
-            </div>
-        </section>
-
-        <!-- Personal Information Section -->
-        <section id="personal" class="personal">
-            <div class="container">
-                <div class="section-head" data-reveal>
-                    <p class="eyebrow">02 — Kompetenzen</p>
-                    <h2>Persönliche Informationen</h2>
-                </div>
-                <div class="personal-content">
-                    <article class="card competence-block spotlight" data-reveal style="--d:0">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M6 20V10l6-6 6 6v10M10 20v-5h4v5"/></svg>
-                        </div>
-                        <h3>Führung &amp; Management</h3>
-                        <p>Vorausschauende Planung, Risikomanagement und prozessorientierte Arbeitsweise bilden die Grundlage meines Handelns. Unternehmerisches Denken und klare Entscheidungsfindung ermöglichen effiziente Prozesse.</p>
-                    </article>
-                    <article class="card competence-block spotlight" data-reveal style="--d:1">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12Z"/><path d="M9 11h6M9 14h4"/></svg>
-                        </div>
-                        <h3>Kommunikation &amp; Soft Skills</h3>
-                        <p>Kommunikationsstärke, Integrationsfähigkeit und Authentizität fördern effektive Zusammenarbeit und vertrauensvolle Beziehungen. Strukturierte Planung und zuverlässige Umsetzung runden mein Profil ab.</p>
-                    </article>
-                    <article class="card competence-block spotlight" data-reveal style="--d:2">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
-                        </div>
-                        <h3>Analytische &amp; Technische Fähigkeiten</h3>
-                        <p>Analytisches Denkvermögen und Digitalisierungskompetenz ermöglichen fundierte Analysen. Technische Kenntnisse in Programmiersprachen wie C, C++, C#, Swift &amp; SwiftUI sowie HTML &amp; CSS unterstützen meine Arbeit.</p>
-                        <ul class="chips">
-                            <li>C</li><li>C++</li><li>C#</li><li>Swift</li><li>SwiftUI</li><li>HTML</li><li>CSS</li>
-                        </ul>
-                    </article>
-                    <article class="card competence-block spotlight" data-reveal style="--d:3">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
-                        </div>
-                        <h3>Softwarekenntnisse</h3>
-                        <p>Fundierte Erfahrung mit Microsoft Excel und Word für strukturierte und professionelle Dokumentation. Kreative Fähigkeiten in Blender, CapCut und FL Studio für Multimedia-Projekte.</p>
-                        <ul class="chips">
-                            <li>Excel</li><li>Word</li><li>Blender</li><li>CapCut</li><li>FL Studio</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Expertise Section -->
-        <section id="expertise" class="expertise">
-            <div class="container">
-                <div class="section-head" data-reveal>
-                    <p class="eyebrow">03 — Schwerpunkte</p>
-                    <h2>Meine Interessen</h2>
-                </div>
-                <div class="expertise-grid">
-                    <article class="card expertise-card spotlight" data-reveal style="--d:0">
-                        <span class="card-index">01</span>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 11l4 4 8-9"/><path d="M15 6h6v6"/></svg>
-                        </div>
-                        <h3>Aktien</h3>
-                        <p>Ich beschäftige mich intensiv mit der Analyse von Einzelaktien, verfolge Fundamentaldaten und Markttrends. Besonders interessiert mich die Identifikation von aussichtsreichen Anlagechancen.</p>
-                        <a class="card-link" href="#aktien">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-                    </article>
-                    <article class="card expertise-card spotlight" data-reveal style="--d:1">
-                        <span class="card-index">02</span>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-                        </div>
-                        <h3>ETFs</h3>
-                        <p>ETFs faszinieren mich wegen ihrer Diversifikation und Kosteneffizienz. Ich folge verschiedenen Strategien und diskutiere gerne über optimale Portfoliokombinationen.</p>
-                        <a class="card-link" href="#etfs">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-                    </article>
-                    <article class="card expertise-card spotlight" data-reveal style="--d:2">
-                        <span class="card-index">03</span>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h5a3.5 3.5 0 0 1 0 7H8zM8 11h6a3.5 3.5 0 0 1 0 7H8zM8 4v14M10 2v2M13 2v2M10 18v2M13 18v2"/></svg>
-                        </div>
-                        <h3>Kryptowährungen</h3>
-                        <p>Die Blockchain-Technologie und digitalen Assets sind ein faszinierendes Feld. Ich verfolge aktiv die Marktentwicklungen und technologischen Innovationen in diesem Bereich.</p>
-                        <a class="card-link" href="#krypto">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-                    </article>
-                    <article class="card expertise-card spotlight" data-reveal style="--d:3">
-                        <span class="card-index">04</span>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10l4 5-9 11L3 9z"/><path d="M3 9h18M9 4l3 5 3-5M12 9v11"/></svg>
-                        </div>
-                        <h3>Edelmetalle</h3>
-                        <p>Gold, Silber und andere Edelmetalle interessieren mich als klassische Wertanlage. Ich verfolge deren Bedeutung für Vermögensschutz und Krisenvorsorge.</p>
-                        <a class="card-link" href="#edelmetalle">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-                    </article>
-                    <article class="card expertise-card spotlight" data-reveal style="--d:4">
-                        <span class="card-index">05</span>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14M2 21h20M9 21v-5h6v5M9 10h.01M15 10h.01M9 13h.01M15 13h.01"/></svg>
-                        </div>
-                        <h3>Unternehmensanalyse</h3>
-                        <p>Ich analysiere gerne Unternehmen in Bezug auf ihre Bewertung und Wirtschaftlichkeit. Die Suche nach value-Chancen in der Geschäftswelt reizt mich besonders.</p>
-                        <a class="card-link" href="#aktien">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-                    </article>
-                    <article class="card expertise-card spotlight" data-reveal style="--d:5">
-                        <span class="card-index">06</span>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 12V3M12 12l6.4 6.4"/></svg>
-                        </div>
-                        <h3>Finanzplanung</h3>
-                        <p>Ich diskutiere gerne Investmentideen und Ansätze zum Vermögensaufbau. Der Austausch zu verschiedenen Finanzstrategien ist mir besonders wichtig.</p>
-                        <a class="card-link" href="#news">Zu den Nachrichten<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-                    </article>
-                </div>
+                <ul class="snap-grid">
+                    <li><a class="snap-item" href="#edelmetalle" data-snap-item="XAU"><span class="snap-name">Gold</span><span class="snap-price">–</span><span class="snap-sub">€ je Unze</span></a></li>
+                    <li><a class="snap-item" href="#edelmetalle" data-snap-item="XAG"><span class="snap-name">Silber</span><span class="snap-price">–</span><span class="snap-sub">€ je Unze</span></a></li>
+                    <li><a class="snap-item" href="#edelmetalle" data-snap-item="XPT"><span class="snap-name">Platin</span><span class="snap-price">–</span><span class="snap-sub">€ je Unze</span></a></li>
+                    <li><a class="snap-item" href="#krypto" data-snap-item="BTC"><span class="snap-name">Bitcoin</span><span class="snap-price">–</span><span class="snap-sub">€ · 24 h</span></a></li>
+                    <li><a class="snap-item" href="#krypto" data-snap-item="ETH"><span class="snap-name">Ethereum</span><span class="snap-price">–</span><span class="snap-sub">€ · 24 h</span></a></li>
+                    <li><a class="snap-item" href="#edelmetalle" data-snap-item="GSR"><span class="snap-name">Gold/Silber</span><span class="snap-price">–</span><span class="snap-sub">Ratio</span></a></li>
+                </ul>
             </div>
         </section>
 
@@ -283,7 +118,7 @@
         <section id="maerkte" class="markets">
             <div class="container">
                 <div class="section-head" data-reveal>
-                    <p class="eyebrow">04 — Märkte</p>
+                    <p class="eyebrow">01 — Märkte</p>
                     <h2>Live-Märkte</h2>
                     <p class="section-intro">Themen-ETFs und Edelmetalle stehen im Fokus – ergänzt um beliebte Aktien und die größten Kryptowährungen. Die Kurse aktualisieren sich automatisch.</p>
                 </div>
@@ -577,9 +412,10 @@
 
                 <!-- Glossar & Hinweise -->
                 <div class="market-foot">
-                    <div class="glossary" id="glossar">
-                        <h3 class="block-title small" data-reveal>Fachbegriffe kurz erklärt</h3>
-                        <div class="glossary-grid" data-reveal>
+                    <div class="glossary" data-reveal>
+                        <details class="glossary-wrap" id="glossar">
+                        <summary><span class="block-title small">Fachbegriffe kurz erklärt</span></summary>
+                        <div class="glossary-grid">
                             <details id="g-etf"><summary>ETF</summary><p><em>Exchange Traded Fund</em> – ein börsengehandelter Fonds, der einen Index nachbildet. Ein Kauf streut das Geld automatisch über viele Unternehmen. Das Fondsvermögen ist Sondervermögen und bei einer Pleite des Anbieters geschützt.</p></details>
                             <details id="g-ter"><summary>TER</summary><p><em>Total Expense Ratio</em> – die laufenden jährlichen Kosten eines Fonds in Prozent. Sie werden nicht separat berechnet, sondern täglich anteilig vom Fondsvermögen abgezogen.</p></details>
                             <details id="g-acc"><summary>Thesaurierend (Acc)</summary><p>Dividenden und Zinsen werden nicht ausgezahlt, sondern automatisch wieder angelegt – das nutzt den Zinseszinseffekt. Das Gegenstück heißt „ausschüttend“ (Dist).</p></details>
@@ -593,6 +429,7 @@
                             <details id="g-stable"><summary>Stablecoin</summary><p>Eine Kryptowährung, die an eine klassische Währung – meist den US-Dollar – gekoppelt ist, z. B. Tether (USDT). Ihr Kurs schwankt kaum; sie dient im Kryptohandel als „digitales Bargeld“.</p></details>
                             <details id="g-dominanz"><summary>BTC-Dominanz</summary><p>Der Anteil von Bitcoin an der Marktkapitalisierung aller Kryptowährungen. Steigt sie, fließt Kapital eher in Bitcoin als in andere Coins („Altcoins“).</p></details>
                         </div>
+                        </details>
                     </div>
 
                     <aside class="disclaimer" id="hinweise" data-reveal>
@@ -611,7 +448,7 @@
         <section id="news" class="news">
             <div class="container">
                 <div class="section-head" data-reveal>
-                    <p class="eyebrow">05 — Nachrichten</p>
+                    <p class="eyebrow">02 — Nachrichten</p>
                     <h2>Marktrelevante News</h2>
                     <p class="section-intro">Gesammelt aus führenden Finanz- und Wirtschaftsmedien, automatisch den Themen zugeordnet. Meldungen ohne Marktbezug werden aussortiert.</p>
                 </div>
@@ -650,12 +487,194 @@
             </div>
         </section>
 
+        <!-- Profil: Über mich · Persönliches · Interessen -->
+        <section id="profil" class="profile">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">03 — Über mich</p>
+                    <h2>Profil</h2>
+                </div>
+
+                <div class="profile-tabs" role="tablist" aria-label="Profil-Bereiche">
+                    <button type="button" role="tab" id="tab-about" data-panel="about" aria-controls="about" aria-selected="true">Über mich</button>
+                    <button type="button" role="tab" id="tab-personal" data-panel="personal" aria-controls="personal" aria-selected="false" tabindex="-1">Persönliche Informationen</button>
+                    <button type="button" role="tab" id="tab-expertise" data-panel="expertise" aria-controls="expertise" aria-selected="false" tabindex="-1">Meine Interessen</button>
+                </div>
+
+                <div class="profile-panel about" id="about" role="tabpanel" aria-labelledby="tab-about">
+                    <div class="about-layout">
+                    <div class="about-text">
+                        <p class="lead" data-reveal>
+                            Willkommen auf meiner persönlichen Website.
+                        </p>
+                        <p data-reveal>
+                            Die Finanzmärkte faszinieren mich – ihre Dynamik, ihre Chancen und auch ihre Herausforderungen. Ich beschäftige mich intensiv mit Aktien, ETFs, Kryptowährungen und Edelmetallen und verfolge täglich, wie sich diese Märkte entwickeln. Dabei geht es mir nicht nur um Zahlen, sondern darum, Zusammenhänge zu verstehen und fundierte Perspektiven zu entwickeln.
+                        </p>
+                        <p data-reveal>
+                            Mein beruflicher Weg ist vielseitig: Ich habe ein Elektrofachabitur sowie eine Ausbildung zum Elektroniker für Betriebstechnik abgeschlossen. Anschließend konnte ich in unterschiedlichen Bereichen wertvolle Erfahrungen sammeln – von der Sicherheitsarbeit auf Veranstaltungen über meine Tätigkeit als Servicemonteur bis hin zur Rolle als bauleitender Monteur im Bereich Krananlagen.
+                        </p>
+                        <p data-reveal>
+                            Diese Stationen haben mich geprägt: Ich habe gelernt, Verantwortung zu übernehmen, Risiken realistisch einzuschätzen und auch in anspruchsvollen Situationen einen kühlen Kopf zu bewahren. Genau diese Fähigkeiten helfen mir heute, die Finanzmärkte strukturiert und diszipliniert zu analysieren.
+                        </p>
+                        <p data-reveal>
+                            Meine technische Ausbildung hat mein analytisches Denken geschärft und mir ein gutes Verständnis für komplexe Systeme vermittelt – ein klarer Vorteil beim Bewerten wirtschaftlicher Entwicklungen. Zusätzlich spreche ich Englisch und Russisch auf nahezu muttersprachlichem Niveau, was mir den Zugang zu internationalen Informationen und unterschiedlichen Perspektiven ermöglicht.
+                        </p>
+                    </div>
+
+                    <aside class="about-side">
+                        <div class="timeline-card spotlight" data-reveal>
+                            <h3 class="side-title">Beruflicher Weg</h3>
+                            <ol class="timeline">
+                                <li>
+                                    <span class="t-dot"></span>
+                                    <strong>Elektrofachabitur</strong>
+                                    <span>Technisches Fundament</span>
+                                </li>
+                                <li>
+                                    <span class="t-dot"></span>
+                                    <strong>Elektroniker für Betriebstechnik</strong>
+                                    <span>Ausbildung abgeschlossen</span>
+                                </li>
+                                <li>
+                                    <span class="t-dot"></span>
+                                    <strong>Sicherheitsarbeit</strong>
+                                    <span>Auf Veranstaltungen</span>
+                                </li>
+                                <li>
+                                    <span class="t-dot"></span>
+                                    <strong>Servicemonteur</strong>
+                                    <span>Technischer Service</span>
+                                </li>
+                                <li>
+                                    <span class="t-dot"></span>
+                                    <strong>Bauleitender Monteur</strong>
+                                    <span>Bereich Krananlagen</span>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="lang-card spotlight" data-reveal>
+                            <h3 class="side-title">Sprachen</h3>
+                            <div class="lang-row">
+                                <span>Englisch</span>
+                                <div class="bar"><i style="--w:96%"></i></div>
+                            </div>
+                            <div class="lang-row">
+                                <span>Russisch</span>
+                                <div class="bar"><i style="--w:96%"></i></div>
+                            </div>
+                            <p class="lang-note">Nahezu muttersprachliches Niveau</p>
+                        </div>
+                    </aside>
+                </div>
+                </div>
+
+                <div class="profile-panel personal" id="personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
+                    <div class="personal-content">
+                    <article class="card competence-block spotlight" data-reveal style="--d:0">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M6 20V10l6-6 6 6v10M10 20v-5h4v5"/></svg>
+                        </div>
+                        <h3>Führung &amp; Management</h3>
+                        <p>Vorausschauende Planung, Risikomanagement und prozessorientierte Arbeitsweise bilden die Grundlage meines Handelns. Unternehmerisches Denken und klare Entscheidungsfindung ermöglichen effiziente Prozesse.</p>
+                    </article>
+                    <article class="card competence-block spotlight" data-reveal style="--d:1">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12Z"/><path d="M9 11h6M9 14h4"/></svg>
+                        </div>
+                        <h3>Kommunikation &amp; Soft Skills</h3>
+                        <p>Kommunikationsstärke, Integrationsfähigkeit und Authentizität fördern effektive Zusammenarbeit und vertrauensvolle Beziehungen. Strukturierte Planung und zuverlässige Umsetzung runden mein Profil ab.</p>
+                    </article>
+                    <article class="card competence-block spotlight" data-reveal style="--d:2">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
+                        </div>
+                        <h3>Analytische &amp; Technische Fähigkeiten</h3>
+                        <p>Analytisches Denkvermögen und Digitalisierungskompetenz ermöglichen fundierte Analysen. Technische Kenntnisse in Programmiersprachen wie C, C++, C#, Swift &amp; SwiftUI sowie HTML &amp; CSS unterstützen meine Arbeit.</p>
+                        <ul class="chips">
+                            <li>C</li><li>C++</li><li>C#</li><li>Swift</li><li>SwiftUI</li><li>HTML</li><li>CSS</li>
+                        </ul>
+                    </article>
+                    <article class="card competence-block spotlight" data-reveal style="--d:3">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+                        </div>
+                        <h3>Softwarekenntnisse</h3>
+                        <p>Fundierte Erfahrung mit Microsoft Excel und Word für strukturierte und professionelle Dokumentation. Kreative Fähigkeiten in Blender, CapCut und FL Studio für Multimedia-Projekte.</p>
+                        <ul class="chips">
+                            <li>Excel</li><li>Word</li><li>Blender</li><li>CapCut</li><li>FL Studio</li>
+                        </ul>
+                    </article>
+                </div>
+                </div>
+
+                <div class="profile-panel expertise" id="expertise" role="tabpanel" aria-labelledby="tab-expertise" hidden>
+                    <div class="expertise-grid">
+                    <article class="card expertise-card spotlight" data-reveal style="--d:0">
+                        <span class="card-index">01</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 11l4 4 8-9"/><path d="M15 6h6v6"/></svg>
+                        </div>
+                        <h3>Aktien</h3>
+                        <p>Ich beschäftige mich intensiv mit der Analyse von Einzelaktien, verfolge Fundamentaldaten und Markttrends. Besonders interessiert mich die Identifikation von aussichtsreichen Anlagechancen.</p>
+                        <a class="card-link" href="#aktien">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    </article>
+                    <article class="card expertise-card spotlight" data-reveal style="--d:1">
+                        <span class="card-index">02</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+                        </div>
+                        <h3>ETFs</h3>
+                        <p>ETFs faszinieren mich wegen ihrer Diversifikation und Kosteneffizienz. Ich folge verschiedenen Strategien und diskutiere gerne über optimale Portfoliokombinationen.</p>
+                        <a class="card-link" href="#etfs">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    </article>
+                    <article class="card expertise-card spotlight" data-reveal style="--d:2">
+                        <span class="card-index">03</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h5a3.5 3.5 0 0 1 0 7H8zM8 11h6a3.5 3.5 0 0 1 0 7H8zM8 4v14M10 2v2M13 2v2M10 18v2M13 18v2"/></svg>
+                        </div>
+                        <h3>Kryptowährungen</h3>
+                        <p>Die Blockchain-Technologie und digitalen Assets sind ein faszinierendes Feld. Ich verfolge aktiv die Marktentwicklungen und technologischen Innovationen in diesem Bereich.</p>
+                        <a class="card-link" href="#krypto">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    </article>
+                    <article class="card expertise-card spotlight" data-reveal style="--d:3">
+                        <span class="card-index">04</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10l4 5-9 11L3 9z"/><path d="M3 9h18M9 4l3 5 3-5M12 9v11"/></svg>
+                        </div>
+                        <h3>Edelmetalle</h3>
+                        <p>Gold, Silber und andere Edelmetalle interessieren mich als klassische Wertanlage. Ich verfolge deren Bedeutung für Vermögensschutz und Krisenvorsorge.</p>
+                        <a class="card-link" href="#edelmetalle">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    </article>
+                    <article class="card expertise-card spotlight" data-reveal style="--d:4">
+                        <span class="card-index">05</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14M2 21h20M9 21v-5h6v5M9 10h.01M15 10h.01M9 13h.01M15 13h.01"/></svg>
+                        </div>
+                        <h3>Unternehmensanalyse</h3>
+                        <p>Ich analysiere gerne Unternehmen in Bezug auf ihre Bewertung und Wirtschaftlichkeit. Die Suche nach value-Chancen in der Geschäftswelt reizt mich besonders.</p>
+                        <a class="card-link" href="#aktien">Zu den Kursen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    </article>
+                    <article class="card expertise-card spotlight" data-reveal style="--d:5">
+                        <span class="card-index">06</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 12V3M12 12l6.4 6.4"/></svg>
+                        </div>
+                        <h3>Finanzplanung</h3>
+                        <p>Ich diskutiere gerne Investmentideen und Ansätze zum Vermögensaufbau. Der Austausch zu verschiedenen Finanzstrategien ist mir besonders wichtig.</p>
+                        <a class="card-link" href="#news">Zu den Nachrichten<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    </article>
+                </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
                 <div class="contact-panel" data-reveal>
                     <div class="contact-glow" aria-hidden="true"></div>
-                    <p class="eyebrow">06 — Kontakt</p>
+                    <p class="eyebrow">04 — Kontakt</p>
                     <h2>Lassen Sie uns in Kontakt treten</h2>
                     <p class="contact-intro">Ich freue mich auf den Austausch von Ideen, Informationen und Anliegen.</p>
                     <div class="contact-content">

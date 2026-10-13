@@ -1532,3 +1532,271 @@ section.news { background: linear-gradient(180deg, transparent, rgba(255, 255, 2
 @media (prefers-reduced-motion: reduce) {
     .live-dot, .status.is-live::before, .is-skeleton { animation: none !important; }
 }
+
+/* =========================================================
+   KOMPAKT-UPDATE: Märkte zuerst · Dropdown-Menü · Profil-Tabs
+   ========================================================= */
+
+/* ---------- Kompaktere Abstände ---------- */
+section { padding: 80px 0; }
+.section-head { margin-bottom: 2.6rem; }
+.market-block + .market-block, .market-duo, .market-foot { margin-top: 3.6rem; }
+.consent-bar { margin-bottom: 2.4rem; }
+.block-head { margin-bottom: 1.5rem; }
+
+/* ---------- Hero: kompakt ---------- */
+.hero {
+    min-height: 0;
+    padding: calc(var(--nav-h) + 44px) 0 72px;
+}
+.hero::after { height: 90px; }
+#chart-canvas { height: 70%; }
+.hero-eyebrow { margin-bottom: 1.3rem; }
+.hero-title { font-size: clamp(2.5rem, 7vw, 4.8rem); }
+.subtitle { margin-top: 1.1rem; }
+.tagline { margin-top: 0.7rem; font-size: 0.98rem; }
+.hero-actions { margin-top: 1.8rem; }
+.hero-actions .btn { padding: 13px 26px; }
+.scroll-hint { display: none; }
+
+/* ---------- Markt-Überblick ---------- */
+.snapshot { padding: 0 0 12px; margin-top: -34px; z-index: 3; }
+.snap-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.snap-head strong { font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.72rem; color: var(--gold); }
+.snap-time { margin-left: auto; color: var(--text-dim); font-size: 0.78rem; }
+.snap-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.snap-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: rgba(10, 16, 34, 0.72);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s ease, transform 0.4s var(--ease), background 0.3s ease;
+}
+.snap-item:hover { border-color: var(--line-gold); transform: translateY(-3px); background: rgba(217, 180, 74, 0.07); }
+.snap-name { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.snap-price { font-size: 1.2rem; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.snap-sub { font-size: 0.7rem; line-height: 1.35; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.snap-sub.up { color: var(--up); }
+.snap-sub.down { color: var(--down); }
+.snap-item.is-loading .snap-price {
+    color: transparent;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+    background-size: 200% 100%;
+    animation: shimmerBg 1.6s linear infinite;
+}
+
+/* ---------- Dropdown-Menü ---------- */
+.nav-menu > li { position: relative; }
+.nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px 7px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    transition: color 0.3s ease, background 0.3s ease;
+}
+.nav-trigger:hover, .has-sub.open > .nav-trigger { color: #fff; }
+.nav-trigger.active { color: #fff; background: rgba(217, 180, 74, 0.14); box-shadow: inset 0 0 0 1px var(--line-gold); }
+.chev { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s var(--ease); }
+.has-sub.open > .nav-trigger .chev { transform: rotate(180deg); }
+
+.submenu {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    z-index: 1010;
+    min-width: 230px;
+    padding: 8px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(10, 16, 34, 0.94);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, 8px);
+    transition: opacity 0.3s ease, transform 0.4s var(--ease), visibility 0s linear 0.3s;
+}
+.submenu::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; } /* Hover-Brücke */
+.has-sub.open > .submenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+    transition-delay: 0s;
+}
+@media (hover: hover) and (min-width: 761px) {
+    .has-sub:hover > .submenu { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); transition-delay: 0s; }
+    .has-sub:hover > .nav-trigger { color: #fff; }
+    .has-sub:hover > .nav-trigger .chev { transform: rotate(180deg); }
+}
+.nav-menu .submenu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+.nav-menu .submenu a:hover { color: #fff; background: rgba(217, 180, 74, 0.1); }
+.submenu em { font-style: normal; font-size: 0.56rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+
+/* ---------- Profil-Tabs ---------- */
+.profile-tabs {
+    display: flex;
+    gap: 6px;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto 2.6rem;
+    padding: 5px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.profile-tabs::-webkit-scrollbar { display: none; }
+.profile-tabs button {
+    flex: none;
+    padding: 9px 20px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.3s ease, background 0.3s ease;
+}
+.profile-tabs button:hover { color: #fff; }
+.profile-tabs button[aria-selected="true"] { color: #fff; background: rgba(217, 180, 74, 0.14); box-shadow: inset 0 0 0 1px var(--line-gold); }
+.profile-panel:not([hidden]) { animation: panelIn 0.6s var(--ease); }
+@keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+section.profile { background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.022), transparent); }
+.profile-panel.about .about-layout { gap: 48px; }
+.about-text p { margin-bottom: 1.3rem; }
+
+/* ---------- Fachbegriffe einklappbar ---------- */
+.glossary-wrap { border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.02); }
+.glossary-wrap > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 22px;
+    list-style: none;
+    cursor: pointer;
+}
+.glossary-wrap > summary::-webkit-details-marker { display: none; }
+.glossary-wrap > summary .block-title { margin: 0; }
+.glossary-wrap > summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--gold); transition: transform 0.3s var(--ease); }
+.glossary-wrap[open] > summary::after { transform: rotate(45deg); }
+.glossary-wrap .glossary-grid { padding: 0 18px 18px; }
+
+/* ---------- Behebt: News-Filter weitete die Seite auf dem Handy ---------- */
+.news-toolbar > *, .news-filters { min-width: 0; max-width: 100%; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+    .snap-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+    section { padding: 56px 0; }
+    .section-head { margin-bottom: 1.8rem; }
+    .market-block + .market-block, .market-duo, .market-foot { margin-top: 2.8rem; }
+    .market-duo .market-block + .market-block { margin-top: 2.8rem; }
+
+    .hero { padding: calc(var(--nav-h) + 28px) 0 64px; }
+    .hero-eyebrow { margin-bottom: 1rem; }
+    .tagline { display: none; }
+    .hero-actions { margin-top: 1.4rem; flex-wrap: nowrap; gap: 10px; }
+    .hero-actions .btn { width: auto; max-width: none; flex: 1 1 auto; padding: 13px 16px; font-size: 0.9rem; }
+    .hero-actions .btn-ghost { flex: 0 0 auto; }
+
+    .snapshot { margin-top: -30px; }
+    .snap-grid { gap: 8px; }
+    .snap-item { padding: 10px 11px; border-radius: 14px; }
+    .snap-price { font-size: 1.02rem; }
+    .snap-name { font-size: 0.62rem; letter-spacing: 0.07em; }
+    .snap-sub { font-size: 0.64rem; }
+
+    /* Drawer mit Akkordeon-Untermenüs */
+    .nav-menu { justify-content: flex-start; padding: 92px 24px 40px; overflow-y: auto; gap: 4px; }
+    .nav-menu > li { width: 100%; }
+    .nav-menu > li > a, .nav-trigger { display: flex; width: 100%; justify-content: space-between; padding: 14px 18px; border-radius: 14px; font-size: 1.12rem; }
+    .chev { width: 16px; height: 16px; }
+    .submenu {
+        position: static;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.45s var(--ease);
+    }
+    .submenu::before { display: none; }
+    .has-sub.open > .submenu { transform: none; max-height: 420px; }
+    .nav-menu .submenu a { padding: 11px 18px 11px 32px; font-size: 1rem; }
+
+    .tv-mini { height: 190px; }
+    .market-tabs { top: 66px; margin-bottom: 1.4rem; }
+    .profile-tabs { margin-bottom: 1.8rem; }
+    .profile-tabs button { padding: 9px 16px; font-size: 0.84rem; }
+    .glossary-wrap > summary { padding: 15px 18px; }
+    .glossary-wrap .glossary-grid { padding: 0 12px 14px; }
+}
+/* Karussells am Handy: ETFs & Edelmetalle zum Wischen statt endlos untereinander */
+@media (max-width: 760px) {
+    .etf-grid, .metal-grid {
+        display: flex;
+        gap: 14px;
+        margin: 0 -20px;
+        padding: 4px 20px 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .etf-grid::-webkit-scrollbar, .metal-grid::-webkit-scrollbar { display: none; }
+    .etf-card, .metal-card { flex: 0 0 86%; scroll-snap-align: start; }
+    .etf-grid::after, .metal-grid::after { content: ""; flex: 0 0 6px; }
+    .etf-grid + .metal-extras, .metal-grid + .metal-extras { margin-top: 10px; }
+    .news-card { min-height: 0; }
+    .news-card.is-skeleton { min-height: 140px; }
+}
+@media (max-width: 380px) {
+    .snap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .profile-panel:not([hidden]) { animation: none; }
+}

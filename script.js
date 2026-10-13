@@ -10,10 +10,13 @@
     const navbar = $('.navbar');
     const progress = $('.scroll-progress');
     const toTop = $('.to-top');
-    const navLinks = $$('.nav-menu a');
-    const sections = navLinks
-        .map(a => $(a.getAttribute('href')))
-        .filter(Boolean);
+    const menu = $('#nav-menu');
+    const navItems = $$('.nav-menu > li[data-section]').map(li => ({
+        li,
+        target: document.getElementById(li.dataset.section),
+        ctl: li.querySelector(':scope > a, :scope > .nav-trigger')
+    })).filter(i => i.target);
+    const docTop = el => el.getBoundingClientRect().top + window.scrollY;
 
     let ticking = false;
     const onScroll = () => {
@@ -23,11 +26,11 @@
         progress.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
         toTop.classList.toggle('show', y > 700);
 
-        // aktive Sektion: letzte, deren Oberkante über der Viewport-Mitte liegt
+        // aktiver Menüpunkt: letzte Sektion, deren Oberkante über der Viewport-Mitte liegt
         const mark = y + window.innerHeight * 0.4;
-        let current = sections[0];
-        for (const s of sections) if (s.offsetTop <= mark) current = s;
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current.id}`));
+        let current = null;
+        for (const it of navItems) if (docTop(it.target) <= mark) current = it;
+        navItems.forEach(it => it.ctl.classList.toggle('active', it === current));
         ticking = false;
     };
     window.addEventListener('scroll', () => {
@@ -38,19 +41,77 @@
 
     toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
 
-    /* ---------- Mobile-Menü ---------- */
+    /* ---------- Menü: Dropdowns + mobile Schublade ---------- */
     const toggle = $('.nav-toggle');
-    const menu = $('#nav-menu');
+    const subs = $$('.has-sub', menu);
+    const closeSubs = except => subs.forEach(li => {
+        if (li === except) return;
+        li.classList.remove('open');
+        $('.nav-trigger', li).setAttribute('aria-expanded', 'false');
+    });
+    subs.forEach(li => {
+        const trigger = $('.nav-trigger', li);
+        trigger.addEventListener('click', e => {
+            e.stopPropagation();
+            const open = !li.classList.contains('open');
+            closeSubs(li);
+            li.classList.toggle('open', open);
+            trigger.setAttribute('aria-expanded', String(open));
+        });
+    });
+    document.addEventListener('click', e => { if (!e.target.closest('.has-sub')) closeSubs(); });
+
     const setMenu = open => {
         menu.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
         document.body.style.overflow = open ? 'hidden' : '';
+        if (!open) closeSubs();
     };
     toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-    navLinks.forEach(a => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+    $$('a', menu).forEach(a => a.addEventListener('click', () => { setMenu(false); closeSubs(); }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { setMenu(false); closeSubs(); } });
     window.matchMedia('(min-width: 761px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+    /* ---------- Profil-Tabs (Über mich · Persönlich · Interessen) ---------- */
+    const pTabs = $$('.profile-tabs [role="tab"]');
+    const pPanels = $$('.profile-panel');
+    const PANELS = pPanels.map(p => p.id);
+    const showPanel = id => {
+        pTabs.forEach(t => {
+            const on = t.dataset.panel === id;
+            t.setAttribute('aria-selected', String(on));
+            t.tabIndex = on ? 0 : -1;
+        });
+        pPanels.forEach(p => { p.hidden = p.id !== id; });
+    };
+    const scrollToEl = el => {
+        const top = docTop(el) - 84;
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    pTabs.forEach((t, i) => {
+        t.addEventListener('click', () => showPanel(t.dataset.panel));
+        t.addEventListener('keydown', e => {
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            const n = pTabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + pTabs.length) % pTabs.length];
+            n.focus(); showPanel(n.dataset.panel);
+        });
+    });
+    // Links auf #about / #personal / #expertise öffnen das passende Tab
+    document.addEventListener('click', e => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const id = a.getAttribute('href').slice(1);
+        if (!PANELS.includes(id)) return;
+        e.preventDefault();
+        showPanel(id);
+        scrollToEl($('.profile-tabs'));
+        history.replaceState(null, '', '#' + id);
+    });
+    if (PANELS.includes(location.hash.slice(1))) {
+        showPanel(location.hash.slice(1));
+        window.addEventListener('load', () => scrollToEl($('.profile-tabs')));
+    }
 
     /* ---------- Reveal on Scroll ---------- */
     const revealEls = $$('[data-reveal]');
